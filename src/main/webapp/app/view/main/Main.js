@@ -59,7 +59,7 @@ Ext.define('Study.view.main.Main', {
                         expanded: true,
                         selectable: false,
                         children: [{
-                            text: '상품목록',
+                            text: '주문목록',
                             page: 'orderList',
                             leaf: true
                         }]

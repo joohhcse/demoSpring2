@@ -2,6 +2,7 @@ package com.example.demospring2.dao;
 
 
 import com.example.demospring2.domain.Member;
+import com.example.demospring2.domain.Order;
 import com.example.demospring2.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -93,4 +94,53 @@ public class APIDao {
         return jdbcTemplate.queryForList(query);
     }
 
+
+    public Long listOrderTotalCount(Order param) throws SQLException {
+        String query = "SELECT COUNT(a.member_seq) totalCount";
+                query += " FROM member a ";
+                query += " INNER JOIN orders b ";
+                query += " ON a.member_seq = b.member_seq ";
+                query += " INNER JOIN orderitem c ";
+                query += " ON b.order_seq = c.order_seq ";
+                query += " INNER JOIN item d ";
+                query += " ON c.item_seq = d.item_seq ";
+
+        if(param.getSearchValue() != null && param.getSearchValue().equals("")) {
+            query += " WHERE a.member_name LIKE CONCAT ('%','" + param.getSearchValue()+"','%') ";
+        }
+
+        System.out.println("listOrderTotalCount >>> " + query);
+
+        return (Long) jdbcTemplate.queryForMap(query).get("totalCount");
+    }
+    public List<Map<String, Object>> listOrder(Order param) throws SQLException {
+        String query = "SELECT a.member_name memberNm"
+                + ",b.order_regdate orderRegDt"
+                + ",b.order_status orderStatus"
+                + ",d.item_name orderNm"
+                + ",c.order_count orderCnt"
+                + ",c.order_total_price orderTotalPrc"
+                + ", e.delivery_name deliveryNm"
+                + ", CONCAT(e.delivery_dft_addr, e.delivery_dtl_addr) deliveryAddr"
+                + ", e.delivery_zipcode deliveryZipcode"
+                + ", e.delivery_status deliveryStatus";
+
+        query += " FROM member a ";
+        query += " INNER JOIN orders b ";
+        query += " ON a.member_seq = b.member_seq ";
+        query += " INNER JOIN orderitem c ";
+        query += " ON b.order_seq = c.order_seq ";
+        query += " INNER JOIN item d ";
+        query += " ON c.item_seq = d.item_seq ";
+        query += " LEFT OUTER JOIN delivery e ";
+        query += " ON c.order_seq = e.order_seq ";
+
+        if(param.getSearchValue() != null && !param.getSearchValue().equals("")) {
+            query += " WHERE a.member_name LIKE CONCAT ('%','" + param.getSearchValue()+"','%') ";
+        }
+
+        System.out.println("listOrder >>> " + query);
+
+        return jdbcTemplate.queryForList(query);
+    }
 }

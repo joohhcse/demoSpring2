@@ -4,7 +4,7 @@ Ext.define("Study.store.MemberList",{
 	storeId : 'memberList',
 	autoLoad : true,
 	field : ['memberSeq', 'memberId','memberNm','memberAddr', 'memberRegDt'],
-	pageSize : 3,
+	pageSize : 2,
 	proxy : {
 		type : 'ajax',
 		actionMethods : {

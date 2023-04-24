@@ -2,6 +2,7 @@ package com.example.demospring2.service;
 
 import com.example.demospring2.dao.APIDao;
 import com.example.demospring2.domain.Member;
+import com.example.demospring2.domain.Order;
 import com.example.demospring2.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,15 @@ public class APIService {
     public List<Map<String,Object>> listMember(Member param)  throws SQLException {
         // TODO Auto-generated method stub
         return dao.listMember(param);
+    }
+
+    public Long listOrderTotalCount(Order param)  throws SQLException {
+        return dao.listOrderTotalCount(param);
+    }
+
+    public List<Map<String,Object>> listOrder(Order param)  throws SQLException {
+        // TODO Auto-generated method stub
+        return dao.listOrder(param);
     }
 
 }

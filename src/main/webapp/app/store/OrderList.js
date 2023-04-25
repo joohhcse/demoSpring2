@@ -4,7 +4,7 @@ Ext.define('Study.store.OrderList', {
     storeId : 'orderList',
     autoLoad : true,
     field: ['memberNm', 'orderRegDt', 'orderStatus', 'orderNm', 'orderCnt', 'orderTotalPrc', 'deliveryNm', 'deliveryAddr', 'deliveryZipcode', 'deliveryStatus'],
-    pageSize : 1,
+    pageSize : 2,
     proxy : {
         type : 'ajax',
         actionMethods : {

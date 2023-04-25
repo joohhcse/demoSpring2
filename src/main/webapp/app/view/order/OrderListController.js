@@ -22,6 +22,11 @@ Ext.define('Study.view.order.OrderListController', {
      */
     openDeliveryInfo : function(btn) {
         var record = btn.getWidgetRecord();
+
+        console.log('orderlistcontroller >> ');
+        console.log(record.get("deliveryNm"));
+        console.log('orderlistcontroller >> ');
+
         Ext.widget("selectDelivery",{
             deliveryNm : record.get("deliveryNm"),
             deliveryAddr : record.get("deliveryAddr"),

@@ -9,7 +9,8 @@ public class Order {
     private String order_status;
 
     private String searchValue;
-
+    private int start;
+    private int limit;
 
     public Integer getOrder_seq() {
         return order_seq;
@@ -51,6 +52,22 @@ public class Order {
         this.searchValue = searchValue;
     }
 
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -59,6 +76,8 @@ public class Order {
                 ", member_seq=" + member_seq +
                 ", order_status='" + order_status + '\'' +
                 ", searchValue='" + searchValue + '\'' +
+                ", start=" + start +
+                ", limit=" + limit +
                 '}';
     }
 }

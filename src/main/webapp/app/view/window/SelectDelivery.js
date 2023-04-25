@@ -3,9 +3,9 @@ Ext.define('Study.view.window.SelectDelivery', {
     listeners : {
         boxready : 'onLoadData'
     },
-    xtype: 'SelectDelivery',
-    controller : 'SelectDelivery',
-    viewModel : 'SelectDelivery',
+    xtype: 'selectDelivery',
+    controller : 'selectDelivery',
+    viewModel : 'selectDelivery',
     width: 610,
     height: 260,
     title: '배송정보 조회',
@@ -37,11 +37,6 @@ Ext.define('Study.view.window.SelectDelivery', {
     }],
     buttons: [{
         text: '닫기',
-        handler : function(btn) {
-            btn.up("window").close();
-        }
-    },{
-        text: '닫기2',
         handler : function(btn) {
             btn.up("window").close();
         }

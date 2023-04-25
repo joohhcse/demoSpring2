@@ -139,6 +139,8 @@ public class APIDao {
             query += " WHERE a.member_name LIKE CONCAT ('%','" + param.getSearchValue()+"','%') ";
         }
 
+        query += "LIMIT " + param.getStart() + " , " + param.getLimit();
+
         System.out.println("listOrder >>> " + query);
 
         return jdbcTemplate.queryForList(query);

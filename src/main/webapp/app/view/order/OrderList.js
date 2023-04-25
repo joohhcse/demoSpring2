@@ -3,7 +3,7 @@ Ext.define('Study.view.order.OrderList', {
     xtype: 'orderList',
     controller: 'orderList',
     viewModel: 'orderList',
-    title: 'OrderList',
+    title: '주문목록 조회',
     columnLines: true,
         tbar: [{
             xtype: 'textfield',
